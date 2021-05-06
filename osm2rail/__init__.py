@@ -17,6 +17,6 @@ __all__=[
     'get_network_from_PBFFile','saveNetwork','showNetwork'
 ]
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __author__ = u'Jiawei Lu, Qian Fu,Zanyang Cui, Junhua Chen'
 __email__ = 'jiaweil9@asu.edu, qian.fu@outlook.com, zanyangcui@outlook.com, cjh@bjtu.edu.cn'

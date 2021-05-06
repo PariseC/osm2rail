@@ -34,6 +34,7 @@ class Link:
         self.from_node = None
         self.to_node = None
 
+        self.railway=None
         self.geometry_str=None
         self.geometry = None
 

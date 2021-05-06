@@ -45,12 +45,13 @@ def saveNetwork(network, output_folder='csvfile', enconding=None):
 
         write = csv.writer(outfile)
         write.writerow(['name', 'link_id', 'osm_way_id', 'from_node_id', 'to_node_id', 'link_type_name', 'electrified',
-                        'frequency', 'highspeed', 'maxspeed','maxspeed_designed', 'passenger_lines', 'railway_ctcs',
+                        'railway','frequency', 'highspeed', 'maxspeed','maxspeed_designed', 'passenger_lines', 'railway_ctcs',
                         'railway_traffic_mode', 'start_date','usage', 'voltage', 'gauge', 'service', 'length', 'geometry'])
         for link_id, link in network.link_dict.items():
             name = link.name if link.name else ''
             link_type_name = link.link_type_name if link.link_type_name else ''
             electrified = link.electrified if link.electrified else ''
+            railway=link.railway if link.railway else ''
             frequency = link.frequency if link.frequency else ''
             highspeed = link.highspeed if link.highspeed else ''
             maxspeed = link.maxspeed if link.maxspeed else ''
@@ -64,7 +65,7 @@ def saveNetwork(network, output_folder='csvfile', enconding=None):
             gauge = link.gauge if link.gauge else ''
             service = link.service if link.service else ''
             line = [name, link.link_id, link.osm_way_id, link.from_node.node_id, link.to_node.node_id,
-                    link_type_name, electrified, frequency,highspeed, maxspeed, maxspeed_designed, passenger_lines,
+                    link_type_name, electrified, railway,frequency,highspeed, maxspeed, maxspeed_designed, passenger_lines,
                     railway_ctcs, railway_traffic_mode,start_date, usage, voltage, gauge, service, link.length,
                     link.geometry.wkt]
             write.writerow(line)
