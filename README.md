@@ -1,7 +1,7 @@
 # OSM2Rail: An open-source education tool for constructing modeling datasets of railway transportation
 **Authors**: Jiawei Lu, Qian Fu, Zanyang Cui, Dr. Junhua Chen
 
-**Email**: jiaweil9@asu.edu, qian.fu@outlook.com, zanyangcui@outlook.com, cjh@bjtu.edu.cn
+**Email**: jiaweil9@asu.edu, q.fu@bham.ac.uk, zanyangcui@outlook.com, cjh@bjtu.edu.cn
 ## Introduction
 The python tool of OSM2Rail is an integrated and enhanced version of two python packages, namely [OSM2GMNS](https://pypi.org/project/osm2gmns/) and [Pydriosm](https://pypi.org/project/pydriosm/). The former aims to convert [OpenStreetMap](https://www.openstreetmap.org/) data to generic node and link files in GMNS format, while the latter aims to enable a batch process of downloading, reading and PostgreSQL-based I/O of OpenStreetMap data.
 
