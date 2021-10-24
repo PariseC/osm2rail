@@ -32,7 +32,7 @@ download_dir='osmfile'
 osm_file=orl.download_osm_data_from_overpass(subarea_names=subarea,download_dir=download_dir,ret_download_path=True)
 
 """Step 2: convert OSM data in .osm format to GMNS-rail network files"""
-net=orl.get_network_from_file(osm_filename=osm_file[0],strict_mode=True,POIs=True)
+net=orl.get_network_from_file(filename=osm_file[0],POIs=True)
 
 """Step 3: visualize rail network data set"""
 orl.showNetwork(net)
