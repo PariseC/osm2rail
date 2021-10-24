@@ -1,11 +1,11 @@
 from .utils import get_distance_from_coord
 from shapely import geometry
+
 class Node:
     def __init__(self):
         self.name = None
         self.node_id = 0
         self.osm_node_id = None
-        self.railway=None
 
         self.x_coord=None
         self.y_coord=None
@@ -16,13 +16,11 @@ class Node:
         self.description=None
         self.osm_railway=None
 
-        self.in_region=False
+        self.in_region=True
         self.valid = False
 
         self.incoming_link_list = []
         self.outgoing_link_list = []
-
-
 
 class Link:
     def __init__(self):
@@ -62,9 +60,8 @@ class Link:
 class POI:
     def __init__(self):
         self.poi_id = 0
-        self.osm_way_id = None      # str
+        self.osm_way_id = None
         self.name = None
-        self.railway=None
         self.geometry = None
         self.ref_node_list=[]
 
@@ -92,12 +89,15 @@ class Way:
         self.service=None
         self.landuse=None
         self.gauge=None
-        self.way_poi =None
+        self.is_poi =None
+        self.layer=None
         self.ref_node_list = []
 
 class Network:
     def __init__(self):
         self.bounds = None
+        self.central_lon = 0.0
+        self.central_lat = 0.0
 
         self.osm_node_dict = {}
         self.osm_way_dict = {}

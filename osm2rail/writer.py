@@ -3,8 +3,9 @@ import os
 from .utils import validate_download_dir
 
 def saveNetwork(network, output_folder='csvfile', enconding=None):
+    validate_download_dir(output_folder)
     if output_folder:
-        output_folder = validate_download_dir(output_folder)
+        validate_download_dir(output_folder)
         node_filepath = os.path.join(output_folder, 'node.csv')
         link_filepath = os.path.join(output_folder, 'link.csv')
         poi_filepath = os.path.join(output_folder, 'poi.csv')
@@ -20,7 +21,7 @@ def saveNetwork(network, output_folder='csvfile', enconding=None):
             outfile = open(node_filepath, 'w', newline='', errors='ignore', encoding=enconding)
 
         write = csv.writer(outfile)
-        write.writerow(['name', 'node_id', 'osm_node_id', 'railway', 'level_crossing', 'access', 'description',
+        write.writerow(['name', 'node_id', 'osm_node_id', 'osm_railway', 'level_crossing', 'access', 'description',
                         'x_coord', 'y_coord', 'geometry'])
 
         for node_id, node in network.node_dict.items():
@@ -28,7 +29,7 @@ def saveNetwork(network, output_folder='csvfile', enconding=None):
             level_crossing = node.level_crossing if node.level_crossing else ''
             access = node.access if node.access else ''
             description = node.description if node.description else ''
-            railway = node.railway if node.railway else ''
+            railway = node.osm_railway if node.osm_railway else ''
             geometry = node.geometry.wkt
             line = [name, node.node_id, node.osm_node_id, railway, level_crossing, access, description,
                     node.x_coord, node.y_coord, geometry]
@@ -81,7 +82,7 @@ def saveNetwork(network, output_folder='csvfile', enconding=None):
                 outfile = open(poi_filepath, 'w', newline='', errors='ignore', encoding=enconding)
 
             write = csv.writer(outfile)
-            write.writerow(['name', 'poi_id', 'osm_way_id', 'railway', 'geometry'])
+            write.writerow(['name', 'poi_id', 'osm_way_id', 'railway','geometry'])
 
             for poi in network.POI_list:
                 name = ' ' + poi.name if poi.name else ''
@@ -90,4 +91,3 @@ def saveNetwork(network, output_folder='csvfile', enconding=None):
             outfile.close()
     except PermissionError:
         print('poi.csv may be locked by other programs. please release it then try again')
-

@@ -10,11 +10,10 @@ OSM2GMNS is currently developed and maintained by Jiawei Lu and Dr. Xuesong Zhou
 Integrating the data conversion and online data downloading capabilities from the above 2 packages, OSM2Rail allows users to rapidly obtain OSM data for a given set of areas and convert them to node, link, and poi files for further system modeling and optimization. Users are recommended to download OSM map data in .osm or .osm.pbf format and convert them to commonly used csv files.
 
 ## Requirements
-- pyhelpers==1.2.15
 - bs4
 - matplotlib<=3.3.0
-- google
-- protobuf==3.15.6
+- osmium
+- fuzzywuzzy
 
 ## Installation
 ```python
@@ -33,7 +32,7 @@ download_dir='osmfile'
 osm_file=orl.download_osm_data_from_overpass(subarea_names=subarea,download_dir=download_dir,ret_download_path=True)
 
 """Step 2: convert OSM data in .osm format to GMNS-rail network files"""
-net=orl.get_network_from_OSMFile(osm_filename=osm_file[0],strict_mode=True,POIs=True)
+net=orl.get_network_from_file(osm_filename=osm_file[0],strict_mode=True,POIs=True)
 
 """Step 3: visualize rail network data set"""
 orl.showNetwork(net)
