@@ -23,6 +23,8 @@ BBBikeDownloadDictName = 'BBBike download dictionary'
 
 
 lonlat_precision = 7
-default_bounds = {'minlat':-90.0, 'minlon':-180.0, 'maxlat':90.0, 'maxlon':180.0}
+default_bounds = {'min_lat':-90.0, 'min_lon':-180.0, 'max_lat':90.0, 'max_lon':180.0}
 railway_poi_set = ['depot','station','workshop','halt','interlocking','junction','spur_junction','terminal','platform',
                    'railway']
+train_speed_list=[160,200,250,300,350]
+block_train_headway={160:6,200:2,250:2,300:2.5,350:3}

@@ -25,13 +25,14 @@ class Node:
 class Link:
     def __init__(self):
         self.link_id = 0
-        self.osm_way_id = None      # str
+        self.osm_way_id = None
         self.name = ''
         self.loc_name=''
         self.link_type_name = None
         self.from_node = None
         self.to_node = None
 
+        self.dir_flag=1
         self.railway=None
         self.geometry_str=None
         self.geometry = None
@@ -40,7 +41,8 @@ class Link:
         self.electrified = None
         self.frequency = None
         self.highspeed = None
-        self.maxspeed = None
+        self.free_peed = None
+        self.capacity = None
         self.maxspeed_designed = None
         self.passenger_lines = None
         self.railway_ctcs = None
@@ -63,15 +65,18 @@ class POI:
         self.osm_way_id = None
         self.name = None
         self.geometry = None
+        self.area=None
+        self.building=None
+        self.amenity=None
+        self.centroid = None
         self.ref_node_list=[]
 
     def generate_geometry(self):
         self.geometry = geometry.Polygon(self.ref_node_list)
 
-
 class Way:
     def __init__(self):
-        self.osm_way_id = None          # string
+        self.osm_way_id = None
         self.name=''
         self.railway = ''
 
@@ -104,6 +109,10 @@ class Network:
 
         self.node_dict = {}
         self.link_dict = {}
+
+        self.micro_node_list = []
+        self.micro_link_list = []
+
         self.POI_list = []
 
         self.central_lon=None

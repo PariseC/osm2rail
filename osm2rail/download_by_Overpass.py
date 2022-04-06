@@ -2,9 +2,9 @@ from .utils import *
 from .web import *
 
 def _get_download_url(box):
-    URL = overpass_homepage()
+    url_ = overpass_homepage()
     min_lat, max_lat, min_lon, max_lon = box
-    url = URL + str(min_lon) + ',' + str(min_lat) + ',' + str(max_lon) + ',' + str(max_lat)
+    url = url_ + str(min_lon) + ',' + str(min_lat) + ',' + str(max_lon) + ',' + str(max_lat)
     return url
 
 def _make_download_file(subarea_name, download_dir):
@@ -18,6 +18,14 @@ def _make_download_file(subarea_name, download_dir):
 
 def download_osm_data_from_overpass(subarea_names=None,bboxs=None,download_dir='osmfile',
                                interval_sec=10,ret_download_path=False):
+    """
+    :param subarea_names: str or list,the names of the subarea to be downloaded.
+    :param bboxs: tuple(min_lat, max_lat,min_lon, max_lon).
+    :param download_dir: str, the path to save the downloaded files.
+    :param interval_sec: float,
+    :param ret_download_path:
+    :return:
+    """
 
     download_dir_ = validate_download_dir(download_dir)
     download_paths = []
@@ -38,7 +46,7 @@ def download_osm_data_from_overpass(subarea_names=None,bboxs=None,download_dir='
             if not is_downloaded:
                 box = get_subregion_download_range(subarea_name)
                 print("The box of {} is {} ".format(subarea_name_,box))
-                print("Downloading \"{}.osm\" to \"\\{}\"...".format(subarea_name_,os.path.relpath(os.path.dirname(osm_filename))))
+                print("Downloading \"{}.osm\" to \"\\{}\"...".format(subarea_name_,os.path.relpath(os.path.dirname(osm_filename))),end='')
                 if box:
                     url = _get_download_url(box)
                     try:

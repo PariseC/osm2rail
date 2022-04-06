@@ -2,7 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.collections import LineCollection,PolyCollection
 
-def showNetwork(network,savefig=None):
+def show_network(network,filename=None,dpi=150):
+    """
+    :param network: network class
+    :param filename: str
+    :param dpi: int
+    :return:
+    """
     node_x_coords=[]
     node_y_coords=[]
     link_coords=[]
@@ -38,10 +44,9 @@ def showNetwork(network,savefig=None):
     # show fig
     plt.show()
     # save fig
-    if savefig:
+    if filename:
         try:
-            figname = savefig['filename'] if 'filename' in savefig.keys() else 'network.png'
-            dpi = savefig['dpi'] if 'dpi' in savefig else 300
+            figname = filename+'network.png'
             fig.savefig(figname, dpi=dpi, bbox_inches='tight')
         except Exception as e:
             print(e)

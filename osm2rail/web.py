@@ -56,7 +56,7 @@ def download_osmfile_from_url(url, osm_filename):
     with open(osm_filename, mode='wb') as f:
         for data in resp.iter_content(block_size, decode_unicode=True):
             wrote = wrote + len(data)
-            print("\033[31m \r download progress：%.2f MB(%.2f MB)\033[0m" % (wrote /block_size,total_size/block_size), end=" ")
+            print("\033[31m \r  download progress：%.2f MB(%.2f MB)\033[0m" % (wrote /block_size,total_size/block_size), end=" ")
             try:
                 f.write(data)
             except TypeError:
